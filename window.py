@@ -1,4 +1,5 @@
 import pygame
+from models import x_pos, y_pos
 from sys import exit
 
 pygame.init()
@@ -9,8 +10,6 @@ clock = pygame.time.Clock()
 background_surface = pygame.image.load('graphics/background.jpg').convert()
 
 ant_surface = pygame.image.load('graphics/antmodel.png').convert_alpha()
-ant_x_pos = 0
-ant_vel = 3
 
 while True:
     for event in pygame.event.get():
@@ -19,9 +18,7 @@ while True:
             exit()
 
     screen.blit(background_surface, (0, 0))
-    screen.blit(ant_surface, (ant_x_pos, 0))
-    ant_x_pos += ant_vel
-    if ant_x_pos >= 1600:
-        ant_x_pos = 0
+    for i in range (50):
+        screen.blit(ant_surface, (x_pos[i], y_pos[i]))
     pygame.display.update()
     clock.tick(60)
